@@ -4,7 +4,7 @@ dotenv.config();
 
 export const config = {
   NODE_ENV: process.env.NODE_ENV || 'development',
-  PORT: process.env.PORT || 3000,
+  PORT: parseInt(process.env.PORT || '3000'),
   
   // Database
   DB_HOST: process.env.DB_HOST || 'localhost',
@@ -18,7 +18,7 @@ export const config = {
   REDIS_PORT: parseInt(process.env.REDIS_PORT || '6379'),
   
   // JWT
-  JWT_SECRET: process.env.JWT_SECRET || 'your-secret-key',
+  JWT_SECRET: process.env.JWT_SECRET || 'dev-secret-change-in-production',
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '1h',
   
   // ClickHouse
