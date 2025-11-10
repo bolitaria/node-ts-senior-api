@@ -16,14 +16,15 @@
     "db:migrate": "make db-migrate",
     "security": "make security-scan",
     "clean": "make clean",
-    "status": "make status"
+    "status": "make status",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "lint-staged": "^13.2.3",
     "concurrently": "^8.2.0"
   },
