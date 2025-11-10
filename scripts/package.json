@@ -1,0 +1,54 @@
+{
+  "name": "node-ts-senior-api-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack application with Node.js + TypeScript backend and React + TypeScript frontend",
+  "scripts": {
+    "prepare": "husky install",
+    "commit": "cz",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:frontend": "cd frontend && npm run lint",
+    "test:backend": "cd backend && npm run test",
+    "test:frontend": "cd frontend && npm run test",
+    "type-check:backend": "cd backend && npm run type-check",
+    "type-check:frontend": "cd frontend && npm run type-check",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "docker:up": "docker-compose -f docker-compose.fullstack.yml up -d",
+    "docker:down": "docker-compose -f docker-compose.fullstack.yml down",
+    "setup:frontend": "./scripts/setup-frontend.sh",
+    "deploy:all": "./scripts/deploy-all.sh"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "concurrently": "^7.6.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "backend/src/**/*.{ts,tsx}": [
+      "cd backend && npm run lint:fix",
+      "cd backend && npm run type-check"
+    ],
+    "frontend/src/**/*.{ts,tsx}": [
+      "cd frontend && npm run lint:fix",
+      "cd frontend && npm run type-check"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

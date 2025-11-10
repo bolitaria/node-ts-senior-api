@@ -1,0 +1,52 @@
+{
+  "name": "fullstack-project",
+  "version": "1.0.0",
+  "description": "Full-stack application with scalable architecture",
+  "type": "module",
+  "scripts": {
+    "setup": "make setup",
+    "dev": "make dev",
+    "dev:all": "concurrently \"make dev-backend\" \"make dev-frontend\"",
+    "build": "make build",
+    "test": "make test",
+    "lint": "make lint",
+    "docker:up": "make docker-up",
+    "docker:down": "make docker-down",
+    "deploy": "make deploy",
+    "db:migrate": "make db-migrate",
+    "security": "make security-scan",
+    "clean": "make clean",
+    "status": "make status"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "concurrently": "^8.2.0"
+  },
+  "lint-staged": {
+    "backend/src/**/*.{ts,tsx}": [
+      "cd backend && npm run lint:fix",
+      "cd backend && npm run type-check"
+    ],
+    "frontend/src/**/*.{ts,tsx}": [
+      "cd frontend && npm run lint:fix",
+      "cd frontend && npm run type-check"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

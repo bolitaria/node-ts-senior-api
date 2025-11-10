@@ -1,0 +1,27 @@
+# branch-protection.yml
+rules:
+  - name: "Protect main branch"
+    branches: ["main"]
+    required_status_checks:
+      strict: true
+      contexts:
+        - "backend-tests"
+        - "frontend-tests"
+        - "security-scan"
+    required_pull_request_reviews:
+      required_approving_review_count: 1
+      dismiss_stale_reviews: true
+      require_code_owner_reviews: false
+    enforce_admins: false
+    restrictions: null
+
+  - name: "Protect develop branch"
+    branches: ["develop"]
+    required_status_checks:
+      strict: false
+      contexts:
+        - "backend-tests"
+        - "frontend-tests"
+    required_pull_request_reviews:
+      required_approving_review_count: 1
+    enforce_admins: false
